@@ -22,17 +22,18 @@ def fibonacci(term=None, maxnum=None):
     return result
 
 def primeNumGen(maxnum):
-    nums = [ [i, True] for i in range(2, maxnum + 1)]
+    nums = [True] * maxnum
+    nums[0] = False
+    nums[1] = False
     
-    for i in range(len(nums)):
-        if nums[i][1]:
-            j = i + i + 2
-            while j < len(nums):
-                nums[j][1] = False
-                j += i + 2
-        else: continue
-        
-    return [i[0] for i in nums if i[1]]
+    for i in range(2,maxnum):
+        if nums[i]:
+            temp = i + i
+            while temp < maxnum:
+                nums[temp] = False
+                temp += i
+    
+    return [i for i in range(maxnum) if nums[i]]
 
 def primeNumGenByTerm(term):
     #should find better formula than having a magic number
