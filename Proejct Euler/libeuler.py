@@ -34,5 +34,22 @@ def primeNumGen(maxnum):
         
     return [i[0] for i in nums if i[1]]
 
+def primeNumGenByTerm(term):
+    #should find better formula than having a magic number
+    primes = primeNumGen(12*term)
+    num = 12 * term + 1
+    
+    while len(primes) < term:
+        temp = True
+        for i in primes:
+            if num % i == 0:
+                temp = False
+                break
+            
+        if temp: primes.append(num)
+        num += 2
+    
+    return primes[:term]
+
 def isPalindrome(blah):
     return str(blah) == str(blah)[::-1]
