@@ -22,18 +22,18 @@ def fibonacci(term=None, maxnum=None):
     return result
 
 def primeNumGen(maxnum):
-    nums = [True] * maxnum
+    nums = [True] * (int(maxnum) + 1)
     nums[0] = False
     nums[1] = False
     
-    for i in range(2,maxnum):
+    for i in range(2,int(maxnum)+1):
         if nums[i]:
             temp = i + i
-            while temp < maxnum:
+            while temp < int(maxnum)+1:
                 nums[temp] = False
                 temp += i
     
-    return [i for i in range(maxnum) if nums[i]]
+    return [i for i in range(int(maxnum)+1) if nums[i]]
 
 def primeNumGenByTerm(term):
     #should find better formula than having a magic number
@@ -54,3 +54,35 @@ def primeNumGenByTerm(term):
 
 def isPalindrome(blah):
     return str(blah) == str(blah)[::-1]
+
+def primeFactorization(num, primes=None):
+    if type(primes) is not list:
+        primes = primeNumGen(num)
+        
+    factors = [ ]
+    i = 0
+    while num != 1:
+        if num % primes[i] == 0:
+            factors.append(primes[i])
+            num //= primes[i]
+            continue
+        else:
+            i += 1
+            continue
+    
+    return factors
+
+def getNumDivisors(num, primes=None):
+    factors = primeFactorization(num, primes)
+    factordict = dict()
+    result = 1
+    
+    for x in set(factors):
+        factordict[x] = 0
+    for i in factors:
+        factordict[i] += 1
+    for x in factordict.values():
+        result *= (x+1)
+        
+    return result
+    
