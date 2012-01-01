@@ -2,6 +2,8 @@
 Various algorithms I have found useful for solving Project Euler problems.
 """
 
+import math
+
 def fibonacci(term=None, maxnum=None):
     result = [ 0, 1]
     a = 0
@@ -86,3 +88,13 @@ def getNumDivisors(num, primes=None):
         
     return result
     
+def getDivisors(num):
+    divisors = [1]
+    
+    for i in range(2, int(math.sqrt(num))+1):
+        if num % i == 0:
+            divisors.append(i)
+            if num/i != i:
+                divisors.append(num//i)
+            
+    return divisors
