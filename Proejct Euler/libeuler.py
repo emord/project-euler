@@ -23,19 +23,26 @@ def fibonacci(term=None, maxnum=None):
     
     return result
 
-def primeNumGen(maxnum):
-    nums = [True] * (int(maxnum) + 1)
-    nums[0] = False
-    nums[1] = False
-    
-    for i in range(2,int(maxnum)+1):
-        if nums[i]:
-            temp = i + i
-            while temp < int(maxnum)+1:
-                nums[temp] = False
-                temp += i
-    
-    return [i for i in range(int(maxnum)+1) if nums[i]]
+#stolen off wikipedia
+def primeNumGen(limit):
+    # creates list of numbers to limit
+    candidates = list(range(limit + 1))
+    # we only have to check to the sqrt of the limit
+    fin = int(limit**0.5)
+
+    for i in range(2, fin + 1):
+        # if the candidate has been assigned None already
+        if not candidates[i]:
+            continue
+
+        # selects a list of multiples of i
+        # first i selects 2 * i
+        # second i says to select every ith term
+        # it then assigns a list of None to that list
+        candidates[2*i::i] = [None] * (limit//i - 1)
+
+    # starts at 2 b/c it is first prime and returns i if it is not None
+    return [i for i in candidates[2:] if i]
 
 def primeNumGenByTerm(term):
     #should find better formula than having a magic number
