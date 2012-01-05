@@ -17,7 +17,7 @@ import cProfile
 
 def main():
     result = 0
-    f = open('names.txt').read().split(',')
+    f = open('prob22.dat').read().split(',')
     f.sort()
     for i in range(len(f)):
         temp = 0

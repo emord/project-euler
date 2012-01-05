@@ -34,7 +34,7 @@ def main():
     result = 0
     triangleNums = set(triangleNumbers(100))
     ords = getords()
-    f = open('words.txt')
+    f = open('prob42.dat')
     f = f.read()
     f = f.strip().split(',')
 
