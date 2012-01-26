@@ -15,11 +15,35 @@ natural numbers and the square of the sum.
 """
 
 import cProfile
+from multiprocessing import Queue, Process
+
+def sumOfSquares(num, out_q):
+    result = 0
+    for i in range(1, num):
+        result += i*i
+    out_q.put(result)
+#    out_q.put(sum([i*i for i in range(1, num)]))
+
+def squareOfSum(num, out_q):
+    #out_q.put(sum([i for i in range(1,num)]) ** 2)
+    out_q.put(((num*(num-1))//2) * ((num*(num-1))//2))
 
 def main():
-    sumOfSquares = sum([i*i for i in range(1,101)]) 
-    squareOfSum = sum([i for i in range(1,101)]) ** 2
-    print(squareOfSum-sumOfSquares1)
+    n = 101
+    #a =  sumOfSquares(n)
+    #b = squareOfSum(n)
+    
+    a = Queue()
+    b = Queue()
+    
+    x = Process(target=sumOfSquares, args=(n, a))
+    y = Process(target=squareOfSum,  args=(n, b))
+    x.start()
+    y.start()
+    x.join()
+    y.join()
+    
+    print(b.get()- a.get())
 
 if __name__ == '__main__':
     cProfile.run('main()')
