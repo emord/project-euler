@@ -105,3 +105,9 @@ def getDivisors(num):
                 divisors.append(num//i)
             
     return divisors
+
+def isPrime(num):
+    if num % 2 == 0: return False
+    for i in range(3, int(math.sqrt(num)), 2):
+        if num % i == 0: return False
+    return True

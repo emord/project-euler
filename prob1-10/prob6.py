@@ -15,7 +15,7 @@ natural numbers and the square of the sum.
 """
 
 import cProfile
-from multiprocessing import Queue, Process
+import multiprocessing
 
 def sumOfSquares(num, out_q):
     result = 0
@@ -33,11 +33,11 @@ def main():
     #a =  sumOfSquares(n)
     #b = squareOfSum(n)
     
-    a = Queue()
-    b = Queue()
+    a = multiprocessing.Queue()
+    b = multiprocessing.Queue()
     
-    x = Process(target=sumOfSquares, args=(n, a))
-    y = Process(target=squareOfSum,  args=(n, b))
+    x = multiprocessing.Process(target=sumOfSquares, args=(n, a))
+    y = multiprocessing.Process(target=squareOfSum,  args=(n, b))
     x.start()
     y.start()
     x.join()
