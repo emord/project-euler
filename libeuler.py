@@ -3,6 +3,7 @@ Various algorithms I have found useful for solving Project Euler problems.
 """
 
 import math
+from fractions import gcd
 
 def fibonacci(term=None, maxnum=None):
     result = [ 0, 1]
@@ -111,3 +112,10 @@ def isPrime(num):
     for i in range(3, int(math.sqrt(num)), 2):
         if num % i == 0: return False
     return True
+
+def relativelyPrime(num):
+    result = [ 1 ]
+    for i in range(2, num):
+        if gcd(i, num) == 1: result.append(num)
+        
+    return result
