@@ -33,8 +33,8 @@ unsigned long primeGen(const unsigned long limit) {
 	return i-1;
 }
 
-void problem007(void) {
-	const unsigned long limit = 1000000;
+void problem007() {
+	const unsigned long limit = 500000;
 	unsigned long result;
 	result = primeGen(limit);
 	printf("Answer: %lu\n", result);

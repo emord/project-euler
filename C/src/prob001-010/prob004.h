@@ -14,7 +14,6 @@
 #define PROB004_H_
 
 #include <stdio.h>
-#include <math.h>
 
 int isPalindrome(unsigned long num) {
 	char buffer[256];
@@ -30,7 +29,7 @@ int isPalindrome(unsigned long num) {
 	return 1;
 }
 
-void problem004(void) {
+void problem004() {
 	unsigned long palindrome;
 	unsigned long temp;
 	unsigned i, j;

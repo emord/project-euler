@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void problem002(void) {
+void problem002() {
 	unsigned a = 1;
 	unsigned b = 2;
 	unsigned i = 2;

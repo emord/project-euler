@@ -13,7 +13,7 @@
 
 #include <stdio.h>
 
-void problem001(void) {
+void problem001() {
 	unsigned sum = 0;
 
 	int i;

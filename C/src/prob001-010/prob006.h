@@ -19,7 +19,6 @@
 #ifndef PROB006_H_
 #define PROB006_H_
 
-#include <math.h>
 #include <stdio.h>
 
 unsigned long sumOfSquares(const int limit) {
@@ -41,7 +40,7 @@ unsigned long squareOfSums(const int limit) {
 	return result * result;
 }
 
-void problem006(void) {
+void problem006() {
 	const int limit = 100;
 
 	printf("Answer: %lu\n", squareOfSums(limit)-sumOfSquares(limit));
