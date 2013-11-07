@@ -29,3 +29,5 @@ isPalindrome x = (show x) == (reverse $ show x)
 
 prob4 :: Integer
 prob4 = maximum [z | x <- [100..999], y <- [x..999], let z = x * y, isPalindrome z]
+
+prob5 = foldl1 lcm [1..20]
